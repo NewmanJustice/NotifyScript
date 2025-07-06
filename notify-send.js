@@ -10,6 +10,7 @@ const templateId = process.env.GOV_NOTIFY_TEMPLATE_ID || '<YOUR_TEMPLATE_ID>';
 const recipientEmail = process.env.RECIPIENT_EMAIL || '<RECIPIENT_EMAIL>';
 const verifyUrl = process.env.VERIFY_URL || '<VERIFY_URL_PLACEHOLDER>';
 const resetUrl = process.env.RESET_URL || '<RESET_URL_PLACEHOLDER>';
+const govNotifyUrl = process.env.GOV_NOTIFY_URL || '<NOTIFY_URL>';
 
 // Personalisation object (adjust keys as needed for your template)
 const personalisation = {
@@ -60,7 +61,7 @@ console.log('\nRequest body:', JSON.stringify(body, null, 2));
 // Send POST request to GOV.UK Notify
 (async () => {
   try {
-    const response = await fetch('https://api.notifications.service.gov.uk/v2/notifications/email', {
+    const response = await fetch(govNotifyUrl, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
